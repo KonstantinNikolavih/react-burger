@@ -1,0 +1,84 @@
+.burgerComposition {
+  width: 600px;
+  height: 912px;
+  padding-left: 56px;
+  padding-top: 100px;
+  align-items: flex-end;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+.bunTop {
+  width: 595px;
+}
+.container {
+  width: 600px;
+  height: 912px;
+  margin: 0;
+  list-style-type: none;
+}
+.burgerScrol {
+  width: 560px;
+  height: 640px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  margin-top: 16px;
+  padding: 0;
+}
+.burgerScrol::-webkit-scrollbar {
+  width: 8px;
+}
+.burgerScrol::-webkit-scrollbar-thumb {
+  background-color: #8585ad;
+  width: 8px;
+  height: 492px;
+}
+.item {
+  width: 568px;
+  margin-bottom: 16px;
+}
+.item:last-of-type {
+  margin-bottom: 0;
+}
+.link {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  width: 548px;
+  height: 80px;
+}
+.link:last-of-type {
+  margin-bottom: 0;
+}
+.DragIcon {
+  display: flex;
+  align-items: center;
+}
+.bunBottom {
+  width: 595px;
+  margin-top: 16px;
+  padding: 0;
+}
+.button {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.priceBurger {
+  margin-left: 40px;
+  margin-right: 10px;
+  font-family: iceLand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 49px;
+  line-height: 36px;
+}
+.ikonBurger {
+  margin-right: 40px;
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}

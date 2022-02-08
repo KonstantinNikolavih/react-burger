@@ -1,0 +1,27 @@
+.hederStyle {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-around;
+  box-sizing: border-box;
+  font-family: JetBrains Mono;
+  font-style: normal;
+  font-weight: normal;
+}
+.linkHeader {
+  display: flex;
+}
+.itemHeader {
+  display: flex;
+  margin-right: 20px;
+}
+.textHeader {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-left: 9px;
+}
+.colorHeader {
+  color: #8585AD
+}
