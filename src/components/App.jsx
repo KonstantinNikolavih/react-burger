@@ -8,10 +8,10 @@ import data from '../utils/data.json';
 export function App() {
   return (
     <div className="App">
-      <AppHeader></AppHeader>
+      <AppHeader />
       <main className={main.main}>
-        <BurgerIngredients data={data}></BurgerIngredients>
-        <BurgerConstructor data={data}></BurgerConstructor>
+        <BurgerIngredients data={data} />
+        <BurgerConstructor data={data} />
       </main>
     </div>
   )
