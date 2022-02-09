@@ -1,0 +1,106 @@
+.gatherBurger {
+  width: 600px;
+  height: 912px;
+  background: #131316;
+}
+.titleGatherBurger {
+  width: 600px;
+  height: 40px;
+  margin: 0;
+  padding-top: 40px;
+  font-family: JetBrains Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 40px;
+  color: #F2F2F3;
+  display: flex;
+  justify-content: flex-start;
+  background: #131316;
+}
+.gatherBurgerTab {
+  display: flex;
+  padding-top: 20px;
+}
+.burgerScrol {
+  width: 600px;
+  height: 912px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
+.burgerScrol::-webkit-scrollbar {
+  width: 8px;
+}
+.burgerScrol::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  width: 8px;
+  height: 492px;
+}
+.textBurger {
+  font-family: JetBrains Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+.bunsBurger {
+  width: 600px;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px;
+}
+.saucesBurger {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px;
+}
+.fillingsBurger {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 272px 272px;
+  grid-row-gap: 32px;
+  row-gap: 32px;
+}
+.item {
+  width: 272px;
+  height: 208px;
+}
+.number {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.list {
+  display: flex;
+  justify-content: center;
+}
+.price {
+  display: flex;
+  justify-content: center;
+  margin: 0 10px;
+  font-family: JetBrains Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+.nameIgridient {
+  display: flex;
+  justify-content: center;
+  margin: 0 10px;
+  font-family: JetBrains Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
