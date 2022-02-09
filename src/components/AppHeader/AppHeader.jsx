@@ -1,33 +1,29 @@
 import React from "react";
 
-import App from '../App';
-import {Logo} from '@ya.praktikum/react-developer-burger-ui-components';
-import {BurgerIcon, ListIcon, ProfileIcon, } from '@ya.praktikum/react-developer-burger-ui-components';
-import {hederStyle, textHeader, itemHeader, } from '../AppHeader/AppHeader.css';
+import headerStyle from '../AppHeader/AppHeader.module.css';
+import { Logo } from '@ya.praktikum/react-developer-burger-ui-components';
+import { BurgerIcon, ListIcon, ProfileIcon, } from '@ya.praktikum/react-developer-burger-ui-components';
 
-
-function AppHeader() {
+export function AppHeader() {
   return (
-    <header className='hederStyle'>
-      <div className='linkHeader'>
-        <a className='itemHeader'>
-          <BurgerIcon/>
-          <p className='textHeader'>Конструктор</p>
+    <header className={headerStyle.header}>
+      <nav className={headerStyle.linkHeader}>
+        <a className={headerStyle.itemHeader}>
+          <BurgerIcon />
+          <p className={headerStyle.textHeader}>Конструктор</p>
 
         </a>
-        <a className='itemHeader colorHeader'>
+        <a className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
           <ListIcon type='secondary'></ListIcon>
-          <p className='textHeader'>Лента заказов</p>
+          <p className={headerStyle.textHeader}>Лента заказов</p>
         </a>
-      </div>
+      </nav>
       <Logo />
-      <a className='itemHeader colorHeader'>
+      <a className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
         <ProfileIcon type='secondary'></ProfileIcon>
-        <p className='textHeader'>Личный кабинет</p>
+        <p className={headerStyle.textHeader}>Личный кабинет</p>
       </a>
     </header>
   )
 }
-
-
 export default AppHeader;
