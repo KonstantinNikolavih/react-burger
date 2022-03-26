@@ -1,26 +1,25 @@
-import React from 'react';
-import AppHeader from '../components/AppHeader/AppHeader';
-import BurgerIngredients from '../components/BurgerIngredients/BurgerIngredients';
-import BurgerConstructor from '../components/BurgerConstructor/BurgerConstructor';
+import { React, useEffect, useState } from 'react';
+import AppHeader from '../AppHeader/AppHeader';
+import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
+import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
-/* import data from '../utils/data.json'; */
-
-import api from '../utils/api.jsx';
+/* import data from '../../utils/data.json'; */
+import api from '../../utils/api';
 
 export function App() {
-  const [ingredients, setIngredients] = React.useState(false);
-  const [load, setLoad] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [ingredients, setIngredients] = useState();
+  const [load, setLoad] = useState(true);
+  const [error, setError] = useState(null);
 
   const resCheck = (res) => {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject()
+      return Promise.reject(`Что-то пошло не так( Ошибка: ${res.status}`)
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getData = () => {
       fetch(api)
         .then(resCheck)
@@ -30,6 +29,7 @@ export function App() {
     }
     getData()
   }, [])
+
 
   if (error) {
     return (
@@ -48,7 +48,7 @@ export function App() {
           <BurgerConstructor data={ingredients} />
         </main>
       </>
-    )
+    );
   }
 }
 

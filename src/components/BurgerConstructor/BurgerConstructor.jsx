@@ -1,8 +1,22 @@
-import React from "react";
-import burgerComposition from './BurgerConstructor.module.css';
-import { ConstructorElement, Button, DragIcon, CurrencyIcon, } from "@ya.praktikum/react-developer-burger-ui-components";
+import { React, useState } from "react";
+import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css";
+import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import Modal from "../Modal/Modal";
+import OrderDetails from "../OrderDetails/OrderDetails";
 
-function BurgerConstructor(props) {
+const BurgerConstructor = (props) => {
+  const [isModal, setIsModal] = useState(false);
+  const propss = props.data.filter((item) => item.type !== 'bun')
+
+  const openModal = () => {
+    setIsModal(true);
+  };
+
+  const closeModal = () => {
+    setIsModal(false);
+  };
+
+
   return (
     <section className={burgerComposition.burgerComposition}>
       <div className={burgerComposition.bunTop}>
@@ -10,15 +24,16 @@ function BurgerConstructor(props) {
           key={"top"}
           type={'top'}
           isLocked={true}
-          handleClose={undefined}
           text={`${props.data[0].name} (верх)`}
           thumbnail={props.data[0].image}
           price={props.data[0].price} />
       </div>
       <ul className={burgerComposition.container}>
+
+
         <div className={`pt-10 ${burgerComposition.burgerScrol}`}>
           <li className={burgerComposition.item}>
-            {props.data.map((props) => (
+            {propss.map((props) => (
               <div key={props._id} className={burgerComposition.link}>
                 <p className={burgerComposition.DragIcon}>
                   <DragIcon type="secondary" />
@@ -32,12 +47,12 @@ function BurgerConstructor(props) {
           </li>
         </div>
       </ul>
+
       <div className={burgerComposition.bunBottom}>
         <ConstructorElement
           key={"bottom"}
           type={'bottom'}
           isLocked={true}
-          handleClose={undefined}
           text={`${props.data[0].name} (низ)`}
           thumbnail={props.data[0].image}
           price={props.data[0].price} />
@@ -47,11 +62,17 @@ function BurgerConstructor(props) {
         <p className={burgerComposition.ikonBurger}>
           <CurrencyIcon type="secondary" />
         </p>
-        <Button type="primary" size="medium">
+        <Button onClick={openModal} type="primary" size="medium">
           Нажми на меня
         </Button>
       </div>
+      {isModal &&
+        <Modal onClick={closeModal}>
+          <OrderDetails />
+        </Modal>
+      }
     </section>
   )
 }
-export default BurgerConstructor
+
+export default BurgerConstructor;

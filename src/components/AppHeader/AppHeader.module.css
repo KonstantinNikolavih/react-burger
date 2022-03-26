@@ -14,6 +14,7 @@
 .itemHeader {
   display: flex;
   margin-right: 20px;
+  text-decoration: none;
 }
 .textHeader {
   display: flex;
@@ -21,6 +22,7 @@
   text-decoration: none;
   margin: 0 auto;
   margin-left: 9px;
+  color: #F2F2F3;
 }
 .colorHeader {
   color: #8585AD
