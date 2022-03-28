@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { CurrencyIcon, Tab, Counter, } from '@ya.praktikum/react-developer-burger-ui-components';
 import gatherBurger from './BurgerIngredients.module.css';
 import Modal from "../Modal/Modal";
+import PropTypesData from '../../utils/PropTypes';
 import OrderDetails from "../OrderDetails/OrderDetails";
-import IngredientDetails from '../IngredientDetails/IngredientDetails'
+import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
 export function BurgerIngredients(props) {
   const buns = props.data.filter((ingredient) => ingredient.type === 'bun');
@@ -13,14 +15,14 @@ export function BurgerIngredients(props) {
 
   return (
     <section className={gatherBurger.gatherBurger}>
-      <h2 className={gatherBurger.titleGatherBurger}>Соберите бургер</h2>
+      <h1 className={` text_type_main-large ${gatherBurger.titleGatherBurger}`}>Соберите бургер</h1>
       <div className={gatherBurger.gatherBurgerTab}>
         <Tab value='buns' active={current === 'buns'} onClick={setCurrent}>Булки</Tab>
         <Tab value='sauces' active={current === 'sauces'} onClick={setCurrent}>Соусы</Tab>
         <Tab value='fillings' active={current === 'fillings'} onClick={setCurrent}>Начинки</Tab>
       </div>
       <div className={`pt-10 ${gatherBurger.burgerScrol}`}>
-        <h3 className={gatherBurger.textBurger}>Булки</h3>
+        <h2 className={`text_type_main-medium ${gatherBurger.textBurger}`}>Булки</h2>
         <div className={gatherBurger.bunsBurger}>
           <div className={gatherBurger.grid}>
             {buns.map((props) => (
@@ -28,7 +30,7 @@ export function BurgerIngredients(props) {
             ))}
           </div>
         </div>
-        <h3 className={`pt-10 ${gatherBurger.textBurger}`}>Соусы</h3>
+        <h2 className={`pt-10 text_type_main-medium ${gatherBurger.textBurger}`}>Соусы</h2>
         <div className={gatherBurger.saucesBurger}>
           <div className={gatherBurger.grid}>
             {sauces.map((props) => (
@@ -36,7 +38,7 @@ export function BurgerIngredients(props) {
             ))}
           </div>
         </div>
-        <h3 className={`pt-10 ${gatherBurger.textBurger}`}>Начинки</h3>
+        <h2 className={`pt-10 text_type_main-medium ${gatherBurger.textBurger}`}>Начинки</h2>
         <div className={gatherBurger.fillingsBurger}>
           <div className={gatherBurger.grid}>
             {fillings.map((props) => (
@@ -80,5 +82,12 @@ const IngredientTab = ({ list }) => {
     </section>
   )
 }
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.arrayOf(PropTypesData).isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
 
 export default BurgerIngredients;

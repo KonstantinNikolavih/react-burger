@@ -10,18 +10,18 @@ export function AppHeader() {
       <nav className={headerStyle.linkHeader}>
         <a href='#' className={headerStyle.itemHeader}>
           <BurgerIcon />
-          <p className={headerStyle.textHeader}>Конструктор</p>
+          <p className={`text_type_main-default ${headerStyle.textHeader}`}>Конструктор</p>
 
         </a>
         <a href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
           <ListIcon type='secondary'></ListIcon>
-          <p className={` ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Лента заказов</p>
+          <p className={` text_type_main-default ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Лента заказов</p>
         </a>
       </nav>
       <Logo />
       <a href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
         <ProfileIcon type='secondary'></ProfileIcon>
-        <p className={` ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Личный кабинет</p>
+        <p className={`text_type_main-default ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Личный кабинет</p>
       </a>
     </header>
   )

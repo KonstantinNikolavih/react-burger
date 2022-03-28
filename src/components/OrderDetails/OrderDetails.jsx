@@ -12,7 +12,6 @@ const OrderDetails = () => {
       </a>
       <p className={orderDetailsStyle.order}>Ваш заказ начали готовить</p>
       <p className={orderDetailsStyle.info}>Дождитесь готовности на орбитальной станции</p>
-
     </div>
   );
 }

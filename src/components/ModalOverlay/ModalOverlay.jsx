@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React/* { useEffect, useRef } */ from "react";
+import PropTypes from 'prop-types';
 import modalOverlayStyle from '../ModalOverlay/ModalOverlay.module.css';
 
 export const ModalOverlay = (props) => {
-  const overlayCloseRef = useRef(null)
+  const overlayCloseRef = React.useRef(null)
 
   const overlayClose = (evt) => {
     if (evt.target === overlayCloseRef.current)
-      props.onClick();
+      props.onClose();
   }
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener("click", overlayClose)
 
     return () => {
@@ -17,10 +18,14 @@ export const ModalOverlay = (props) => {
   })
 
   return (
-    <div className={modalOverlayStyle.overlay} onClick={props.onClick}>
+    <div className={modalOverlayStyle.overlay} onClose={props.onClose}>
       {props.children}
     </div>
   )
+}
+
+ModalOverlay.propTypes = {
+  onClose: PropTypes.func.isRequired,
 }
 
 export default ModalOverlay;

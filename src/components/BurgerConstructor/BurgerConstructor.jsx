@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import PropTypes from "prop-types";
 import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css";
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
@@ -6,7 +7,7 @@ import OrderDetails from "../OrderDetails/OrderDetails";
 
 const BurgerConstructor = (props) => {
   const [isModal, setIsModal] = useState(false);
-  const propss = props.data.filter((item) => item.type !== 'bun')
+  const array = props.data.filter((item) => item.type !== 'bun')
 
   const openModal = () => {
     setIsModal(true);
@@ -33,7 +34,7 @@ const BurgerConstructor = (props) => {
 
         <div className={`pt-10 ${burgerComposition.burgerScrol}`}>
           <li className={burgerComposition.item}>
-            {propss.map((props) => (
+            {array.map((props) => (
               <div key={props._id} className={burgerComposition.link}>
                 <p className={burgerComposition.DragIcon}>
                   <DragIcon type="secondary" />
@@ -59,20 +60,26 @@ const BurgerConstructor = (props) => {
       </div>
       <div className={`pt-10 pr-10 pl-10 ${burgerComposition.button}`}>
         <a className={burgerComposition.priceBurger}>610</a>
-        <p className={burgerComposition.ikonBurger}>
-          <CurrencyIcon type="secondary" />
-        </p>
+        <div className={burgerComposition.ikonBurger}>
+          <CurrencyIcon type="primary" />
+        </div>
         <Button onClick={openModal} type="primary" size="medium">
-          Нажми на меня
+          Оформить заказ
         </Button>
       </div>
       {isModal &&
-        <Modal onClick={closeModal}>
+        <Modal onClose={closeModal}>
           <OrderDetails />
         </Modal>
       }
     </section>
   )
 }
+
+BurgerConstructor.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
 
 export default BurgerConstructor;

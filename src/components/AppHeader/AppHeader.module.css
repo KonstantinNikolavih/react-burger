@@ -22,8 +22,13 @@
   text-decoration: none;
   margin: 0 auto;
   margin-left: 9px;
-  color: #F2F2F3;
+  color: #f2f2f3;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 .colorHeader {
-  color: #8585AD
+  color: #8585ad;
 }
