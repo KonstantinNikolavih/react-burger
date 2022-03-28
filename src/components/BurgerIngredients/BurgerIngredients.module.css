@@ -38,7 +38,7 @@
   height: 492px;
 }
 .textBurger {
-  font-family: JetBrains Mono;
+  /* font-family: 'JetBrains Mono'; */
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -88,7 +88,7 @@
   display: flex;
   justify-content: center;
   margin: 0 10px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -98,7 +98,7 @@
   display: flex;
   justify-content: center;
   margin: 0 10px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

@@ -16,7 +16,7 @@ export function BurgerIngredients(props) {
   return (
     <section className={gatherBurger.gatherBurger}>
       <h1 className={` text_type_main-large ${gatherBurger.titleGatherBurger}`}>Соберите бургер</h1>
-      <div className={gatherBurger.gatherBurgerTab}>
+      <div className={`${gatherBurger.gatherBurgerTab}  text_type_main-small `}>
         <Tab value='buns' active={current === 'buns'} onClick={setCurrent}>Булки</Tab>
         <Tab value='sauces' active={current === 'sauces'} onClick={setCurrent}>Соусы</Tab>
         <Tab value='fillings' active={current === 'fillings'} onClick={setCurrent}>Начинки</Tab>
@@ -72,7 +72,7 @@ const IngredientTab = ({ list }) => {
           <p className={gatherBurger.price}>{list.price}</p>
           <CurrencyIcon type={"primary"} />
         </div>
-        <p className={gatherBurger.nameIgridient}>{list.name}</p>
+        <p className={` text_type_main-medium ${gatherBurger.nameIgridient}`}>{list.name}</p>
       </div>
       {isModal && (
         <Modal onClick={closeModal}>
@@ -85,9 +85,9 @@ const IngredientTab = ({ list }) => {
 
 BurgerIngredients.propTypes = {
   data: PropTypes.arrayOf(PropTypesData).isRequired,
-  name: PropTypes.string.isRequired,
+/*   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired, */
 };
 
 export default BurgerIngredients;

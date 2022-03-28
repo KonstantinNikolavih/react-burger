@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from 'react';
+import PropTypes from "prop-types";
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
 /* import data from '../../utils/data.json'; */
-import api from '../../utils/api';
+import API_URL from '../../utils/api';
 
 export function App() {
   const [ingredients, setIngredients] = useState();
@@ -21,7 +22,7 @@ export function App() {
 
   useEffect(() => {
     const getData = () => {
-      fetch(api)
+      fetch(API_URL)
         .then(resCheck)
         .then(res => setIngredients(res.data))
         .catch(err => setError(err.message))

@@ -77,9 +77,9 @@ const BurgerConstructor = (props) => {
 }
 
 BurgerConstructor.propTypes = {
-  name: PropTypes.string.isRequired,
+ /*  name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired, */
 };
 
 export default BurgerConstructor;
