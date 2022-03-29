@@ -12,12 +12,12 @@ export function Modal(props) {
   const overlayCloseRef = React.useRef(null)
   const modalRoot = document.querySelector("#modal");
 
-
-  const handleEscClose = (evt) => {
-    if (evt.key === "Escape")
-      props.onClose();
-  }
   React.useEffect(() => {
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape")
+        props.onClose();
+    }
+
     document.addEventListener("keydown", handleEscClose)
 
     return () => {

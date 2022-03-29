@@ -5,11 +5,12 @@ import modalOverlayStyle from '../ModalOverlay/ModalOverlay.module.css';
 export const ModalOverlay = (props) => {
   const overlayCloseRef = React.useRef(null)
 
-  const overlayClose = (evt) => {
-    if (evt.target === overlayCloseRef.current)
-      props.onClose();
-  }
   React.useEffect(() => {
+    const overlayClose = (evt) => {
+      if (evt.target === overlayCloseRef.current)
+        props.onClose();
+    }
+
     document.addEventListener("click", overlayClose)
 
     return () => {

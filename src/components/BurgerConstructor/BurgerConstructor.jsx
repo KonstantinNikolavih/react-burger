@@ -4,6 +4,7 @@ import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import PropTypesData from '../../utils/PropTypes';
 
 const BurgerConstructor = (props) => {
   const [isModal, setIsModal] = useState(false);
@@ -19,7 +20,8 @@ const BurgerConstructor = (props) => {
 
 
   return (
-    <section className={burgerComposition.burgerComposition}>
+    <>
+    <div className={burgerComposition.burgerComposition}>
       <div className={burgerComposition.bunTop}>
         <ConstructorElement
           key={"top"}
@@ -67,18 +69,19 @@ const BurgerConstructor = (props) => {
           Оформить заказ
         </Button>
       </div>
-      {isModal &&
+    </div>
+    {isModal &&
         <Modal onClose={closeModal}>
           <OrderDetails />
         </Modal>
       }
-    </section>
+    </>
   )
 }
 
 BurgerConstructor.propTypes = {
- /*  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypesData).isRequired,
+ /*  image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired, */
 };
 
