@@ -51,7 +51,6 @@ export function BurgerIngredients(props) {
   )
 }
 
-
 const IngredientTab = ({ list }) => {
   const [isModal, setIsModal] = useState(null);
   const openModal = item => {
@@ -84,7 +83,7 @@ const IngredientTab = ({ list }) => {
 }
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(PropTypesData).isRequired,
+  array: (PropTypesData),
 }
 
 export default BurgerIngredients;

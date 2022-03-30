@@ -4,7 +4,6 @@ import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
-/* import data from '../../utils/data.json'; */
 import API_URL from '../../utils/api';
 
 export function App() {

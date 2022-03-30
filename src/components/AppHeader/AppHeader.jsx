@@ -11,7 +11,6 @@ export function AppHeader() {
         <a href='#' className={headerStyle.itemHeader}>
           <BurgerIcon />
           <p className={`text_type_main-default ${headerStyle.textHeader}`}>Конструктор</p>
-
         </a>
         <a href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
           <ListIcon type='secondary'></ListIcon>

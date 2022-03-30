@@ -1,4 +1,4 @@
-import React/*  { useEffect, useRef } */ from "react";
+import React, { useEffect, useRef }from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay.jsx";
@@ -6,13 +6,11 @@ import style from "../Modal/Modal.module.css";
 import { createPortal } from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-
-
 export function Modal(props) {
-  const overlayCloseRef = React.useRef(null)
+  const overlayCloseRef = useRef(null)
   const modalRoot = document.querySelector("#modal");
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape")
         props.onClose();
