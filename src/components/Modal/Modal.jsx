@@ -39,12 +39,10 @@ export function Modal({ title, onClose, children }) {
       <ModalOverlay onClose={onClose} />
       <div className={style.modal}>
         <h3 className={style.title}>{title}</h3>
-        {/*  <ModalOverlay onClose={onClose}> */}
         <button className={style.close} onClick={onClose}>
           <CloseIcon type="primary" />
         </button>
         {children}
-        {/*  </ModalOverlay> */}
       </div>
     </>,
     modalRoot
@@ -52,7 +50,7 @@ export function Modal({ title, onClose, children }) {
 }
 
 Modal.propTypes = {
-  /*  title: PropTypes.func.isRequired, */
+  title: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
