@@ -4,7 +4,7 @@ import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
-import PropTypesData from '../../utils/PropTypes';
+import { PropTypesData } from '../../utils/PropTypes';
 
 export const BurgerConstructor = (props) => {
   const [isModal, setIsModal] = useState(false);
@@ -42,7 +42,8 @@ export const BurgerConstructor = (props) => {
                     isLocked={false}
                     text={props.name}
                     thumbnail={props.image}
-                    price={props.price} />
+                    price={props.price}
+                  />
                 </div>
               ))}
             </li>
@@ -77,7 +78,7 @@ export const BurgerConstructor = (props) => {
 }
 
 BurgerConstructor.propTypes = {
-  array: (PropTypesData),
+  data: PropTypes.arrayOf(PropTypesData).isRequired,
 };
 
 export default BurgerConstructor;

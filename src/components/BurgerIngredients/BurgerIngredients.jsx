@@ -3,11 +3,21 @@ import PropTypes from "prop-types";
 import { CurrencyIcon, Tab, Counter, } from '@ya.praktikum/react-developer-burger-ui-components';
 import gatherBurger from './BurgerIngredients.module.css';
 import Modal from "../Modal/Modal";
-import PropTypesData from '../../utils/PropTypes';
+import { PropTypesData } from '../../utils/PropTypes.jsx';
 import OrderDetails from "../OrderDetails/OrderDetails";
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
 export function BurgerIngredients(props) {
+  const [isModal, setIsModal] = useState(null);
+
+  const openModal = () => {
+    setIsModal(true)
+  }
+
+  const closeModal = () => {
+    setIsModal(false);
+  };
+
   const buns = props.data.filter((ingredient) => ingredient.type === 'bun');
   const sauces = props.data.filter((ingredient) => ingredient.type === 'sauce');
   const fillings = props.data.filter((ingredient) => ingredient.type === 'main');
@@ -47,12 +57,18 @@ export function BurgerIngredients(props) {
           </div>
         </div>
       </div>
+      {isModal && (
+        <Modal onClick={closeModal}>
+          <IngredientDetails {...isModal} />
+        </Modal>
+      )}
     </section>
   )
 }
 
 const IngredientTab = ({ list }) => {
   const [isModal, setIsModal] = useState(null);
+
   const openModal = item => {
     setIsModal(item)
   }
@@ -66,15 +82,18 @@ const IngredientTab = ({ list }) => {
         <div className={gatherBurger.number}>
           <Counter count={1} size="default" />
         </div>
+        {/*  <h2 className={gatherBurger.title}>{list.title}</h2> */}
         <img className='pl-4' src={list.image} alt={list.name} />
         <div className={gatherBurger.list}>
-          <p className={gatherBurger.price}>{list.price}</p>
+          <p className={`text_type_digits-default ${gatherBurger.price}`}>{list.price}</p>
           <CurrencyIcon type={"primary"} />
         </div>
         <p className={` text_type_main-medium ${gatherBurger.nameIgridient}`}>{list.name}</p>
       </div>
       {isModal && (
-        <Modal onClick={closeModal}>
+        <Modal
+          title="Детали ингредиента"
+          onClose={closeModal}>
           <IngredientDetails {...isModal} />
         </Modal>
       )}
@@ -83,7 +102,7 @@ const IngredientTab = ({ list }) => {
 }
 
 BurgerIngredients.propTypes = {
-  array: (PropTypesData),
-}
+  data: PropTypes.arrayOf(PropTypesData).isRequired,
+};
 
 export default BurgerIngredients;

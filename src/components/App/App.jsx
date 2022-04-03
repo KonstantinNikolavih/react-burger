@@ -7,7 +7,7 @@ import main from './App.module.css';
 import API_URL from '../../utils/api';
 
 export function App() {
-  const [ingredients, setIngredients] = useState();
+  const [ingredients, setIngredients] = useState([]);
   const [load, setLoad] = useState(true);
   const [error, setError] = useState(null);
 

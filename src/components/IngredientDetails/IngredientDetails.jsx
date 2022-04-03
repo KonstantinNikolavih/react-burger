@@ -2,11 +2,12 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Modal from "../Modal/Modal";
 import IngredientDetailsStyle from '../IngredientDetails/IngredientDetails.module.css';
+/* import { title } from "process"; */
 
 export function IngredientDetails(props) {
   return (
     <div className={IngredientDetailsStyle.contener}>
-      <h2 className={IngredientDetailsStyle.details}>Детали ингредиента</h2>
+      <h2 className={IngredientDetailsStyle.details}>{props.title}</h2>
       <img className={IngredientDetailsStyle.image} src={props.image}></img>
       <h3 className={IngredientDetailsStyle.name}>{props.name}</h3>
       <ul className={IngredientDetailsStyle.calories}>
