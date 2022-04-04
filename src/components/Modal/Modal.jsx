@@ -27,8 +27,6 @@ export function Modal({ title, onClose, children }) {
       onClose()
     }
 
-    document.addEventListener('click', closeModalOnClick);
-
     return () => {
       document.removeEventListener('click', closeModalOnClick);
     }
@@ -38,7 +36,7 @@ export function Modal({ title, onClose, children }) {
     <>
       <ModalOverlay onClose={onClose} />
       <div className={style.modal}>
-        <h3 className={style.title}>{title}</h3>
+        <h3 className={` text_type_main-large ${style.title}`}>{title}</h3>
         <button className={style.close} onClick={onClose}>
           <CloseIcon type="primary" />
         </button>

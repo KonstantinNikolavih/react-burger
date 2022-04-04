@@ -8,9 +8,9 @@ export function IngredientDetails(props) {
   return (
     <div className={IngredientDetailsStyle.contener}>
       <img className={IngredientDetailsStyle.image} src={props.image}></img>
-      <h3 className={IngredientDetailsStyle.name}>{props.name}</h3>
+      <h3 className={`text_type_main-medium ${IngredientDetailsStyle.name}`}>{props.name}</h3>
       <ul className={IngredientDetailsStyle.calories}>
-        <li className={IngredientDetailsStyle.item}>Калории, ккал
+        <li className={`text_type_main-default ${IngredientDetailsStyle.item}`}>Калории, ккал
           <p className={IngredientDetailsStyle.list}>{props.calories}</p>
         </li>
         <li className={IngredientDetailsStyle.item}>Белки, г

@@ -78,14 +78,13 @@
   align-items: center;
   padding: 0px;
   position: static;
-  width: 112px;
   height: 56px;
   left: calc(50% - 112px / 2 + 202px);
   bottom: 0px;
   flex: none;
   order: 3;
   flex-grow: 0;
-  margin: 0px 20px;
+  margin: 0px 28px;
 
  /*  font-family: 'JetBrains Mono'; */
   font-style: normal;
