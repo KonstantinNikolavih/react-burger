@@ -6,25 +6,25 @@
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 0px 1px rgba(0, 0, 0, 0.04);
   border-radius: 40px;
-  border: 1px solid rgba(76, 76, 255, 0.2);
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .orderNumb {
   width: 520px;
   height: 120px;
   left: 100px;
   top: 120px;
   background: #1C1C21;
-  border: 1px dashed #4C4CFF;
   margin: 0;
   font-size: 80px;
   text-align: center;
 }
+
 .indificator {
-  font-family: JetBrains Mono;
+ /*  font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -32,19 +32,22 @@
   text-align: center;
   color: #f2f2f3;
 }
+
 .link {
   width: 120px;
   height: 120px;
-  border: 1px dashed #4c4cff;
   display: flex;
   justify-content: center;
   align-items: center;
   background: radial-gradient(50% 50% at 50% 50%, rgba(128, 26, 179, 0) 0%, rgba(76, 76, 255, 0.25) 100%);
+  background-image: url(../../images/done.jpg);
+  background-position: center;
 }
+
 .order {
   width: 520px;
   height: 24px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -52,10 +55,11 @@
   text-align: center;
   color: #f2f2f3;
 }
+
 .info {
   width: 520px;
   height: 24px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

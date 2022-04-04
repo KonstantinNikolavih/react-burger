@@ -7,7 +7,6 @@ import IngredientDetailsStyle from '../IngredientDetails/IngredientDetails.modul
 export function IngredientDetails(props) {
   return (
     <div className={IngredientDetailsStyle.contener}>
-      <h2 className={IngredientDetailsStyle.details}>{props.title}</h2>
       <img className={IngredientDetailsStyle.image} src={props.image}></img>
       <h3 className={IngredientDetailsStyle.name}>{props.name}</h3>
       <ul className={IngredientDetailsStyle.calories}>
