@@ -22,16 +22,6 @@ export function Modal({ title, onClose, children }) {
     }
   }, [onClose]);
 
-  useEffect(() => {
-    const closeModalOnClick = () => {
-      onClose()
-    }
-
-    return () => {
-      document.removeEventListener('click', closeModalOnClick);
-    }
-  }, [])
-
   return ReactDOM.createPortal(
     <>
       <ModalOverlay onClose={onClose} />
