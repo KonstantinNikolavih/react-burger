@@ -74,11 +74,14 @@
   font-size: 49px;
   line-height: 36px;
 }
-.ikonBurger {
-  margin-right: 40px;
+.ikonBurger svg {
   width: 36px;
   height: 36px;
-  box-sizing: border-box;
+  object-fit: cover;
+  object-position: center;
+
+  margin-right: 40px;
+ /*  box-sizing: border-box; */
   display: flex;
   align-items: center;
 }
