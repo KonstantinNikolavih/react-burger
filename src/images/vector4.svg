@@ -1,0 +1,41 @@
+<svg width="270" height="260" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#1c1c21" id="canvas_background" height="262" width="272" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <radialGradient gradientTransform="translate(49 51) rotate(-46.1458) scale(70.7248 53.2019)" gradientUnits="userSpaceOnUse" r="1" cy="0" cx="0" id="svg_4">
+    <stop stop-opacity="0" stop-color="#801AB3"/>
+    <stop stop-color="#4C4CFF" offset="1"/>
+   </radialGradient>
+  </defs>
+  <g id="svg_7">
+   <path id="svg_6" fill-opacity="0.25" fill="url(#svg_4)" d="m48.732526,109.739458c-9.948021,13.870051 -9.948004,32.651375 0,46.521255l34.118897,47.569912c9.947969,13.870222 27.581188,19.673118 43.677392,14.37601l55.205437,-18.170278c16.096374,-5.297792 26.994235,-20.492291 26.994235,-37.636467l0,-58.799611c0,-17.144347 -10.898031,-32.338675 -26.994235,-37.636467l-55.205437,-18.170141c-16.096203,-5.29786 -33.729422,0.505891 -43.677392,14.375856l-34.118897,47.569929z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+  <defs>
+   <radialGradient gradientTransform="translate(53.5 50) rotate(-43.0632) scale(73.2274 55.0025)" gradientUnits="userSpaceOnUse" r="1" cy="0" cx="0" id="svg_11">
+    <stop stop-opacity="0" stop-color="#801AB3"/>
+    <stop stop-color="#4C4CFF" offset="1"/>
+   </radialGradient>
+  </defs>
+  <g id="svg_14">
+   <path id="svg_13" fill-opacity="0.25" fill="url(#svg_11)" d="m208.328229,117.070047c6.327578,11.095078 6.327578,24.764821 0,35.8599l-23.826476,41.779097c-6.327423,11.095078 -18.020943,17.92995 -30.675789,17.92995l-47.652332,0c-12.654846,0 -24.348366,-6.834871 -30.675789,-17.92995l-23.826212,-41.779097c-6.327407,-11.095078 -6.327407,-24.764821 0,-35.8599l23.826212,-41.779097c6.327423,-11.095094 18.020943,-17.92995 30.675789,-17.92995l47.652332,0c12.654846,0 24.348366,6.834856 30.675789,17.92995l23.826476,41.779097z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+  <defs>
+   <radialGradient gradientTransform="translate(34 32.6667) rotate(136.146) scale(47.1499 35.4679)" gradientUnits="userSpaceOnUse" r="1" cy="0" cx="0" id="svg_18">
+    <stop stop-opacity="0" stop-color="#801AB3"/>
+    <stop stop-opacity="0.5" stop-color="#4C4CFF" offset="1"/>
+   </radialGradient>
+  </defs>
+  <g stroke="null" id="svg_21">
+   <path stroke-width="0" stroke="null" id="svg_20" fill-opacity="0.25" fill="url(#svg_18)" d="m98.475748,15.006184c20.884267,-14.92203 49.164266,-14.921992 70.048534,0.000038l71.627792,51.178316c20.884653,14.921953 29.623449,41.37178 21.646495,65.51634l-27.359537,82.808151c-7.976954,24.144175 -30.85575,40.490965 -56.670762,40.490965l-88.536898,0c-25.814626,0 -48.693268,-16.34679 -56.670453,-40.490965l-27.359382,-82.808151c-7.977186,-24.14456 0.761765,-50.594387 21.646264,-65.51634l71.627947,-51.178355z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+ </g>
+</svg>

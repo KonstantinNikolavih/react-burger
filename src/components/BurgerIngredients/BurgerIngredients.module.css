@@ -8,7 +8,7 @@
   height: 40px;
   margin: 0;
   padding-top: 40px;
-  font-family: JetBrains Mono;
+  /* font-family: 'JetBrains Mono'; */
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
@@ -38,7 +38,7 @@
   height: 492px;
 }
 .textBurger {
-  font-family: JetBrains Mono;
+  /* font-family: 'JetBrains Mono'; */
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -88,17 +88,17 @@
   display: flex;
   justify-content: center;
   margin: 0 10px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 28px;
   line-height: 24px;
 }
 .nameIgridient {
   display: flex;
   justify-content: center;
   margin: 0 10px;
-  font-family: JetBrains Mono;
+  /* font-family: JetBrains Mono; */
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
