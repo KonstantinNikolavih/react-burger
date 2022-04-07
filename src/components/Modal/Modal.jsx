@@ -9,6 +9,8 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 export function Modal({ title, onClose, children }) {
   const modalRoot = document.querySelector("#modal");
 
+  console.log(modalRoot)
+
   useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape")

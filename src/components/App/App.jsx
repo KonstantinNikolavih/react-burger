@@ -11,6 +11,8 @@ export function App() {
   const [load, setLoad] = useState(true);
   const [error, setError] = useState(null);
 
+  const BurgerContext = React.createContext(null);
+
   const resCheck = (res) => {
     if (res.ok) {
       return res.json();
@@ -29,7 +31,7 @@ export function App() {
     }
     getData()
   }, [])
-
+ console.log(ingredients)
 
   if (error) {
     return (
@@ -44,8 +46,10 @@ export function App() {
       <>
         <AppHeader />
         <main className={main.main}>
-          <BurgerIngredients data={ingredients} />
-          <BurgerConstructor data={ingredients} />
+          <BurgerContext.Provider value={ingredients}>
+            <BurgerIngredients />
+            <BurgerConstructor />
+          </BurgerContext.Provider>
         </main>
       </>
     );

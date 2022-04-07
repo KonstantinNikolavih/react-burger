@@ -18,6 +18,8 @@ export const BurgerConstructor = (props) => {
     setIsModal(false);
   };
 
+ console.log(props.Prototype/* props.data[0].image) */)
+
   return (
     <>
       <div className={burgerComposition.burgerComposition}>
