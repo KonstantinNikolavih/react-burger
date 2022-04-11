@@ -1,14 +1,23 @@
-import { React, useState } from "react";
+import { React, useState, useContext, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
 import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css";
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { PropTypesData } from '../../utils/PropTypes';
+import { BurgerContext } from "../../utils/BurgerContext.jsx";
+import { setOrder } from "../../utils/api";
 
-export const BurgerConstructor = (props) => {
+export const BurgerConstructor = () => {
   const [isModal, setIsModal] = useState(false);
-  const array = props.data.filter((item) => item.type !== 'bun')
+  const [room, setRoom] = useState(null);
+  const [error, setError] = useState(null);
+  const [id, setId] = useState(false);
+  const [sum, setSum] = useState(null);
+
+  const { ingredients } = useContext(BurgerContext);
+  const array = useMemo(() => ingredients.filter((item) => item.type !== 'bun'));
+  const bun = useMemo(() => ingredients.find(item => item.type === 'bun'));
 
   const openModal = () => {
     setIsModal(true);
@@ -18,20 +27,43 @@ export const BurgerConstructor = (props) => {
     setIsModal(false);
   };
 
- console.log(props.Prototype/* props.data[0].image) */)
+  console.log(ingredients)
+
+  useEffect(() => {
+    bun &&
+      setSum(
+        array.reduce((acc, el) => acc + el.price, 0) + bun.price * 2
+      );
+    bun && setId([].concat(bun._id).concat(array.map((el) => el._id)));
+  }, [ingredients, bun]);
+
+  const sendOrderId = () => {
+    setOrder(ingredients)
+      .then((replyObj) => {
+        setRoom(replyObj);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        openModal();
+      });
+  };
 
   return (
     <>
       <div className={burgerComposition.burgerComposition}>
-        <div className={burgerComposition.bunTop}>
-          <ConstructorElement
-            key={"top"}
-            type={'top'}
-            isLocked={true}
-            text={`${props.data[0].name} (верх)`}
-            thumbnail={props.data[0].image}
-            price={props.data[0].price} />
-        </div>
+        {bun && (
+          <div className={burgerComposition.bunTop}>
+            <ConstructorElement
+              key={"top"}
+              type={'top'}
+              isLocked={true}
+              text={`${bun.name} (верх)`}
+              thumbnail={bun.image}
+              price={bun.price} />
+          </div>
+        )}
         <ul className={burgerComposition.container}>
           <div className={`pt-10 ${burgerComposition.burgerScrol}`}>
             <li className={burgerComposition.item}>
@@ -51,36 +83,34 @@ export const BurgerConstructor = (props) => {
             </li>
           </div>
         </ul>
-        <div className={burgerComposition.bunBottom}>
-          <ConstructorElement
-            key={"bottom"}
-            type={'bottom'}
-            isLocked={true}
-            text={`${props.data[0].name} (низ)`}
-            thumbnail={props.data[0].image}
-            price={props.data[0].price} />
-        </div>
+        {bun && (
+          <div className={burgerComposition.bunBottom}>
+            <ConstructorElement
+              key={"bottom"}
+              type={'bottom'}
+              isLocked={true}
+              text={`${bun.name} (низ)`}
+              thumbnail={bun.image}
+              price={bun.price} />
+          </div>
+        )}
         <div className={`pt-10 pr-10 pl-10 ${burgerComposition.button}`}>
-          <a className={burgerComposition.priceBurger}>610</a>
+          <a className={burgerComposition.priceBurger}>{sum}</a>
           <div className={burgerComposition.ikonBurger}>
             <CurrencyIcon type="primary" />
           </div>
-          <Button onClick={openModal} type="primary" size="medium">
+          <Button onClick={sendOrderId} type="primary" size="medium">
             Оформить заказ
           </Button>
         </div>
       </div>
       {isModal &&
         <Modal onClose={closeModal}>
-          <OrderDetails />
+          <OrderDetails orderNumber={room.order.number} error={error} />
         </Modal>
       }
     </>
   )
 }
-
-BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(PropTypesData).isRequired,
-};
 
 export default BurgerConstructor;

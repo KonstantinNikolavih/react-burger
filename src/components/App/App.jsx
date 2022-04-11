@@ -1,17 +1,18 @@
 import { React, useEffect, useState } from 'react';
-import PropTypes from "prop-types";
+/* import { createContext } from 'react';
+import PropTypes from "prop-types"; */
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
-import API_URL from '../../utils/api';
+import { API_URL } from '../../utils/api';
+import { BurgerContext } from '../../utils/BurgerContext.jsx'
+/* import { resCheck } from '../../utils/api.jsx' */
 
 export function App() {
   const [ingredients, setIngredients] = useState([]);
   const [load, setLoad] = useState(true);
   const [error, setError] = useState(null);
-
-  const BurgerContext = React.createContext(null);
 
   const resCheck = (res) => {
     if (res.ok) {
@@ -23,7 +24,7 @@ export function App() {
 
   useEffect(() => {
     const getData = () => {
-      fetch(API_URL)
+      fetch(`${API_URL.api}ingredients`)
         .then(resCheck)
         .then(res => setIngredients(res.data))
         .catch(err => setError(err.message))
@@ -31,7 +32,7 @@ export function App() {
     }
     getData()
   }, [])
- console.log(ingredients)
+  console.log(`${API_URL.api}ingredients`)
 
   if (error) {
     return (
@@ -46,7 +47,7 @@ export function App() {
       <>
         <AppHeader />
         <main className={main.main}>
-          <BurgerContext.Provider value={ingredients}>
+          <BurgerContext.Provider value={{ingredients}}>
             <BurgerIngredients />
             <BurgerConstructor />
           </BurgerContext.Provider>
