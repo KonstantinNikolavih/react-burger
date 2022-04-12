@@ -4,7 +4,8 @@ export const API_URL = {
     "Content-Type": "application/json",
   }
 }
-export const resCheck = (res) => {
+
+export const checkRespose = (res) => {
   if (res.ok) {
     return res.json();
   } else {
@@ -12,14 +13,20 @@ export const resCheck = (res) => {
   }
 }
 
-export const setOrder = (setId) => {
+export const getData = () => {
+  return fetch(`${API_URL.api}ingredients`, {
+    headers: API_URL.headers
+  }).then(checkRespose);
+};
+
+export const sendOrder = (setId) => {
   return fetch(`${API_URL.api}orders`, {
     method: "POST",
     headers: API_URL.headers,
     body: JSON.stringify({
       "ingredients": setId,
     }),
-  }).then(resCheck);
+  }).then(checkRespose);
 };
 
-export default { API_URL, resCheck, setOrder };
+export default { API_URL, checkRespose, sendOrder, getData };

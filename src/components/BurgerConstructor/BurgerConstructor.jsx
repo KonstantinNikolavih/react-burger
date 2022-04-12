@@ -6,7 +6,7 @@ import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { PropTypesData } from '../../utils/PropTypes';
 import { BurgerContext } from "../../utils/BurgerContext.jsx";
-import { setOrder } from "../../utils/api";
+import { sendOrder } from "../../utils/api";
 
 export const BurgerConstructor = () => {
   const [isModal, setIsModal] = useState(false);
@@ -38,7 +38,7 @@ export const BurgerConstructor = () => {
   }, [ingredients, bun]);
 
   const sendOrderId = () => {
-    setOrder(ingredients)
+    sendOrder(ingredients)
       .then((replyObj) => {
         setRoom(replyObj);
       })

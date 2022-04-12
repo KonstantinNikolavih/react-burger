@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import orderDetailsStyle from "../OrderDetails/OrderDetails.module.css";
 import { CheckMarkIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
@@ -22,6 +23,11 @@ const OrderDetails = ({ orderNumber, error }) => {
       <p className={orderDetailsStyle.info}>повторите попытку</p>
     </div>
   )
+};
+
+OrderDetails.propTypes = {
+  orderNumber: PropTypes.number,
+  error: PropTypes.number,
 };
 
 export default OrderDetails;
