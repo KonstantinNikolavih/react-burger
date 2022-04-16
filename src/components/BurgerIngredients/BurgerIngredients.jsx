@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { CurrencyIcon, Tab, Counter, } from '@ya.praktikum/react-developer-burger-ui-components';
 import gatherBurger from './BurgerIngredients.module.css';
@@ -6,8 +6,10 @@ import Modal from "../Modal/Modal";
 import { PropTypesData } from '../../utils/PropTypes.jsx';
 import OrderDetails from "../OrderDetails/OrderDetails";
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import BurgerContext from "../../utils/BurgerContext.jsx";
 
-export function BurgerIngredients(props) {
+export function BurgerIngredients() {
+  const { ingredients } = useContext(BurgerContext);
   const [isModal, setIsModal] = useState(null);
   const [current, setCurrent] = useState(null);
 
@@ -33,9 +35,9 @@ export function BurgerIngredients(props) {
     }
   }, [current])
 
-  const buns = props.data.filter((ingredient) => ingredient.type === 'bun');
-  const sauces = props.data.filter((ingredient) => ingredient.type === 'sauce');
-  const fillings = props.data.filter((ingredient) => ingredient.type === 'main');
+  const buns = ingredients.filter((ingredient) => ingredient.type === 'bun');
+  const sauces = ingredients.filter((ingredient) => ingredient.type === 'sauce');
+  const fillings = ingredients.filter((ingredient) => ingredient.type === 'main');
 
 
   return (
@@ -121,9 +123,5 @@ const IngredientTab = ({ list }) => {
     </section>
   )
 }
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(PropTypesData).isRequired,
-};
 
 export default BurgerIngredients;
