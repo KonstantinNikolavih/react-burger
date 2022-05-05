@@ -9,6 +9,7 @@ export const PropTypesData = PropTypes.shape({
   fat: PropTypes.number.isRequired,
   carbohydrates: PropTypes.number.isRequired,
   _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 });
 
 export default PropTypesData;

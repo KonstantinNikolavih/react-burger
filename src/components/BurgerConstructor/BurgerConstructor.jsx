@@ -1,5 +1,4 @@
 import { React, useRef, useState, useContext, useMemo, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
 import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css";
 import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
@@ -38,6 +37,7 @@ const BurgerConstructor = () => {
       })
     }
   };
+  console.log(listIngredients)
 
   const array = useMemo(() => ingredientsConst.filter(list => list.type !== 'bun'), [ingredientsConst]);
   const bun = useMemo(() => ingredientsConst.find(list => list.type === 'bun'), [ingredientsConst]);
@@ -67,13 +67,13 @@ const BurgerConstructor = () => {
     );
   };
 
-  const bunIngredient = ({ image, name, price, uid }, type) => {
+  const bunIngredient = ({ image, name, price, uid }, type, side) => {
     return (
-      <li key={uid} className={burgerComposition.list}>
+      <li key={`${uid}${side}`} className={burgerComposition.list}>
         <ConstructorElement
           type={type}
           isLocked={true}
-          text={name}
+          text={`${name} (${side})`}
           price={price}
           thumbnail={image}
         />
@@ -99,7 +99,7 @@ const BurgerConstructor = () => {
       <div ref={dropTarget} >
         <div className={burgerComposition.burgerComposition}>
           <div className={burgerComposition.bunTop}>
-            {bun && bunIngredient(bun, 'top')}
+            {bun && bunIngredient(bun, 'top', 'верх' )}
           </div>
           <ul className={burgerComposition.container}>
             <div className={`pt-10 ${burgerComposition.burgerScrol}`}>
@@ -107,8 +107,7 @@ const BurgerConstructor = () => {
             </div>
           </ul>
           <div className={burgerComposition.bunBottom}>
-            {bun && (bunIngredient(bun, 'bottom')
-            )}
+            {bun && bunIngredient(bun, 'bottom', 'низ' )}
           </div>
           <div className={`pt-10 pr-10 pl-10 ${burgerComposition.button}`}>
             <a className={burgerComposition.priceBurger}>{sum}</a>
