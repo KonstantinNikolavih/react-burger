@@ -28,10 +28,10 @@ export const burgerConstructor = (state = burgerConstructorReducer, action) => {
     }
     case REMOVE_INGREDIENT_INSIDE_CONSTRUCTOR: {
       return {
-            ...state,
-            ingredientsConst: [...state.ingredientsConst].filter((item) => item.uid !== action.uid)
-          }
-    }
+        ...state,
+        ingredientsConst: [...state.ingredientsConst].filter((item) => item.uid !== action.uid)
+      }
+}
     case TOGGLE_BUN_INSIDE_CONSTRUCTOR: {
       return {
         ...state,

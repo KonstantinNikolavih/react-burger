@@ -1,4 +1,4 @@
-import { POST_ORDER_SUCCESS, POST_ORDER_FAILED, HANDLE_CLOSE_ORDER_MODAL, POST_ORDER_REQUEST} from '../actions/ingredients';
+import { POST_ORDER_SUCCESS, POST_ORDER_FAILED, HANDLE_CLOSE_ORDER_MODAL, POST_ORDER_REQUEST } from '../actions/ingredients';
 
 const orderReducer = {
   orderNumber: null,
@@ -6,7 +6,7 @@ const orderReducer = {
 }
 
 export const order = (state = orderReducer, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case POST_ORDER_REQUEST: {
       return {
         ...state

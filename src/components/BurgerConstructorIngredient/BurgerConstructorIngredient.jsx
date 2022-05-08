@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CHANGE_INGREDIENT_POSITION, REMOVE_INGREDIENT_INSIDE_CONSTRUCTOR } from "../../services/actions/ingredients";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useDrop, useDrag } from "react-dnd";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+
 export const BurgerConstructorIngredient = ({ name, image, price, uid }) => {
   const dispatch = useDispatch()
 
@@ -25,16 +26,20 @@ export const BurgerConstructorIngredient = ({ name, image, price, uid }) => {
   });
 
    function dragDropList(el) {
+    console.log(uid)
     dragRef(el)
     dropRef(el)
   }
 
   const deleteIngredient = (uid) => {
+    console.log(uid)
     dispatch({
       type: REMOVE_INGREDIENT_INSIDE_CONSTRUCTOR,
       uid: uid
     })
   };
+  console.log(deleteIngredient)
+
 
   return (
     <div ref={dragDropList} >
@@ -44,7 +49,7 @@ export const BurgerConstructorIngredient = ({ name, image, price, uid }) => {
         text={name}
         price={price}
         thumbnail={image}
-        closeIngredient={() => deleteIngredient(uid)}
+        handleClose={() => deleteIngredient(uid)}
       />
     </div>
   );
@@ -56,3 +61,5 @@ BurgerConstructorIngredient.propTypes = {
   price: PropTypes.number.isRequired,
   uid: PropTypes.string.isRequired
 };
+
+export default BurgerConstructorIngredient;

@@ -1,11 +1,11 @@
 import { ADD_INGREDIENT_DETAILS, REMOVE_INGREDIENT_DETAILS } from '../actions/ingredients';
 
-const  ingredientDetailsReducer = {
+const ingredientDetailsReducer = {
   ingredientDetails: null
 }
 
 export const ingredientDetails = (state = ingredientDetailsReducer, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ADD_INGREDIENT_DETAILS: {
       return {
         ingredientDetails: action.ingredientDetails,

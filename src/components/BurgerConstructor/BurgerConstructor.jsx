@@ -1,13 +1,13 @@
-import { React, useRef, useState, useContext, useMemo, useEffect, useCallback } from "react";
+import { React, useMemo, } from "react";
 import burgerComposition from "../BurgerConstructor/BurgerConstructor.module.css";
-import { DragIcon, ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { HANDLE_CLOSE_ORDER_MODAL, ADD_INGREDIENT_INSIDE_CONSTRUCTOR, TOGGLE_BUN_INSIDE_CONSTRUCTOR, } from '../../services/actions/ingredients';
 import { v4 as uuidv4 } from 'uuid';
 import { BurgerConstructorIngredient } from '../BurgerConstructorIngredient/BurgerConstructorIngredient.jsx';
 import { useSelector, useDispatch } from "react-redux";
-import { useDrop, useDrag } from "react-dnd";
+import { useDrop, } from "react-dnd";
 import { getIngredients } from "../../services/actions/ingredients.jsx";
 
 const BurgerConstructor = () => {
@@ -43,7 +43,7 @@ const BurgerConstructor = () => {
   const bun = useMemo(() => ingredientsConst.find(list => list.type === 'bun'), [ingredientsConst]);
   const sum = useMemo(() => (bun ? bun.price : 0) * 2 + array.reduce((acc, elem) => acc + elem.price, 0), [bun, array]);
 
-  const [{ isHover }, dropTarget] = useDrop({
+  const [, dropTarget] = useDrop({
     accept: "ingredient",
     collect: (monitor) => ({
       isHover: monitor.isOver(),
@@ -99,7 +99,7 @@ const BurgerConstructor = () => {
       <div ref={dropTarget} >
         <div className={burgerComposition.burgerComposition}>
           <div className={burgerComposition.bunTop}>
-            {bun && bunIngredient(bun, 'top', 'верх' )}
+            {bun && bunIngredient(bun, 'top', 'верх')}
           </div>
           <ul className={burgerComposition.container}>
             <div className={`pt-10 ${burgerComposition.burgerScrol}`}>
@@ -107,7 +107,7 @@ const BurgerConstructor = () => {
             </div>
           </ul>
           <div className={burgerComposition.bunBottom}>
-            {bun && bunIngredient(bun, 'bottom', 'низ' )}
+            {bun && bunIngredient(bun, 'bottom', 'низ')}
           </div>
           <div className={`pt-10 pr-10 pl-10 ${burgerComposition.button}`}>
             <a className={burgerComposition.priceBurger}>{sum}</a>

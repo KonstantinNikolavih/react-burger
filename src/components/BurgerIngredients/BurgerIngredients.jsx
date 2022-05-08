@@ -1,20 +1,18 @@
-import React, { useState, useMemo, useCallback, useRef, useEffect, useContext } from "react";
+import React, { useState, useMemo, useRef,  } from "react";
 import PropTypes from "prop-types";
 import { useDrag } from "react-dnd";
 import { CurrencyIcon, Tab, Counter, } from '@ya.praktikum/react-developer-burger-ui-components';
 import gatherBurger from './BurgerIngredients.module.css';
 import Modal from "../Modal/Modal";
-import OrderDetails from "../OrderDetails/OrderDetails";
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_INGREDIENT_DETAILS, REMOVE_INGREDIENT_DETAILS } from "../../services/actions/ingredients";
-import { getId } from "../../services/actions/ingredients.jsx";
 
 export function BurgerIngredients() {
   const dispatch = useDispatch();
 
   const { ingredients } = useSelector(state => state.burgerIngredients);
-  const { IngredientDetails } = useSelector(state => state.ingredientDetails);
+  const { ingredientDetails } = useSelector(state => state.ingredientDetails);
 
   const bunsTab = useRef();
   const saucesTab = useRef();
@@ -32,14 +30,14 @@ export function BurgerIngredients() {
   const openModal = (id) => {
     dispatch({
       type: ADD_INGREDIENT_DETAILS,
-      IngredientDetails: selectedIngredient(id),
+      ingredientDetails: selectedIngredient(id),
     })
   };
 
   const closeModal = () => {
     dispatch({
       type: REMOVE_INGREDIENT_DETAILS,
-      IngredientDetails: null,
+      ingredientDetails: null,
     })
   };
 
@@ -69,6 +67,8 @@ export function BurgerIngredients() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   }
+  console.log(IngredientDetails)
+  console.log(ingredients)
 
   return (
     <section className={gatherBurger.gatherBurger}>
@@ -110,9 +110,9 @@ export function BurgerIngredients() {
           </div>
         </div>
       </div>
-      {IngredientDetails && (
-        <Modal onClick={closeModal}>
-          <IngredientDetails {...IngredientDetails} />
+      {ingredientDetails && (
+        <Modal title="Детали ингредиента" onClose={closeModal}>
+          <IngredientDetails ingredient={ingredientDetails} />
         </Modal>
       )}
     </section>
@@ -120,7 +120,6 @@ export function BurgerIngredients() {
 }
 
 const IngredientTab = ({ image, name, price, id }) => {
-  const [isModal, setIsModal] = useState(null);
 
   const ingredientsConst = useSelector(state => state.burgerConstructor.ingredientsConst)
 
@@ -137,35 +136,18 @@ const IngredientTab = ({ image, name, price, id }) => {
     })
   });
 
-  const openModal = item => {
-    setIsModal(item)
-  }
-
-  const closeModal = () => {
-    setIsModal(false);
-  };
-
   return (
-    <section>
-      <div ref={dragRef} onClick={() => openModal()} className={gatherBurger.item} style={{ opacity }}>
-        <div className={gatherBurger.number}>
-          {sum > 0 && <Counter count={sum} size="default" />}
-        </div>
-        <img className='pl-4' src={image} alt={name} />
-        <div className={gatherBurger.list}>
-          <p className={`text_type_digits-default ${gatherBurger.price}`}>{price}</p>
-          <CurrencyIcon type={"primary"} />
-        </div>
-        <p className={` text_type_main-medium ${gatherBurger.nameIgridient}`}>{name}</p>
+    <div ref={dragRef} style={{ opacity }}>
+      <div className={gatherBurger.number}>
+        {sum > 0 && <Counter count={sum} size="default" />}
       </div>
-      {isModal && (
-        <Modal
-          title="Детали ингредиента"
-          onClose={closeModal}>
-          <IngredientDetails {...isModal} />
-        </Modal>
-      )}
-    </section>
+      <img className='pl-4' src={image} alt={name} />
+      <div className={gatherBurger.list}>
+        <p className={`text_type_digits-default ${gatherBurger.price}`}>{price}</p>
+        <CurrencyIcon type={"primary"} />
+      </div>
+      <p className={` text_type_main-medium ${gatherBurger.nameIgridient}`}>{name}</p>
+    </div>
   )
 }
 
@@ -173,7 +155,7 @@ IngredientTab.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 }
 
 export default BurgerIngredients;

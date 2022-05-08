@@ -1,10 +1,9 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, } from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
 import { API_URL } from '../../utils/api';
-import { getData } from "../../utils/api.jsx";
 import { getId } from "../../services/actions/ingredients"
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
