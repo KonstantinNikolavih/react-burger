@@ -9,6 +9,10 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDispatch, useSelector } from 'react-redux';
 
+// route
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { LoginPage } from '../../pages/Login.jsx';
+
 export function App() {
   const dispatch = useDispatch();
 
@@ -37,6 +41,12 @@ export function App() {
             <BurgerIngredients />
             <BurgerConstructor />
           </DndProvider>
+
+          <Router>
+            <Route path="/login" exact={true}>
+              <LoginPage />
+            </Route>
+          </Router>
         </main>
       </>
     );

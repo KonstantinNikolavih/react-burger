@@ -3,6 +3,7 @@
 # dependencies
 /библиотека ui
 /node_modules
+/chat
 /.pnp
 .pnp.js
 
