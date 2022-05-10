@@ -1,23 +1,22 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, } from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients.jsx';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor.jsx';
 import main from './App.module.css';
 import { API_URL } from '../../utils/api';
-import { BurgerContext } from '../../utils/BurgerContext.jsx'
-import { getData } from "../../utils/api.jsx";
+import { getId } from "../../services/actions/ingredients"
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useDispatch, useSelector } from 'react-redux';
 
 export function App() {
-  const [ingredients, setIngredients] = useState([]);
-  const [load, setLoad] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+
+  const { load, error } = useSelector(state => state.burgerIngredients)
 
   useEffect(() => {
-    getData()
-      .then(res => setIngredients(res.data))
-      .catch(err => setError(err.message))
-      .finally(() => setLoad(false))
-  }, [])
+    dispatch(getId())
+  }, [dispatch]);
 
   console.log(`${API_URL.api}ingredients`)
 
@@ -34,10 +33,10 @@ export function App() {
       <>
         <AppHeader />
         <main className={main.main}>
-          <BurgerContext.Provider value={{ ingredients }}>
+          <DndProvider backend={HTML5Backend}>
             <BurgerIngredients />
             <BurgerConstructor />
-          </BurgerContext.Provider>
+          </DndProvider>
         </main>
       </>
     );
