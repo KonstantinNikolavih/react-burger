@@ -11,10 +11,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // route
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { LoginPage } from '../../pages/Login.jsx';
+import { Login } from '../../pages/Login.jsx';
+import { NotFound404 } from "../../pages/NotFound404/NotFound404"
 
 export function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { load, error } = useSelector(state => state.burgerIngredients)
 
@@ -44,8 +46,13 @@ export function App() {
 
           <Router>
             <Route path="/login" exact={true}>
-              <LoginPage />
+              <Login />
             </Route>
+
+            <Route >
+              <NotFound404 />
+            </Route>
+
           </Router>
         </main>
       </>

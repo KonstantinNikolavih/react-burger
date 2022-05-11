@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 
-export function LoginPage() {
-
+export function Login() {
+  const dispatch = useDispatch()
 
 
 
