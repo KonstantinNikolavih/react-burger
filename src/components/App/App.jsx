@@ -10,16 +10,23 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDispatch, useSelector } from 'react-redux';
 
 // route
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { /* BrowserRouter as Router, */ Route, useLocation, Switch, useHistory } from 'react-router-dom';
 import { Login } from '../../pages/Login/Login';
 import { Register } from "../../pages/Register/Register";
 import { NotFound404 } from "../../pages/NotFound404/NotFound404";
+import { ResetPassword } from "../../pages/ResetPassword/ResetPassword";
+import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword";
 
 export function App() {
   const dispatch = useDispatch();
-  /* const history = useHistory(); */
+  const location = useLocation();
+  const history = useHistory();
 
   const { load, error } = useSelector(state => state.burgerIngredients)
+
+  const historyAction = history.action === 'PUSH';
+
+  const background = historyAction && location.state && location.state.background;
 
   useEffect(() => {
     dispatch(getId())
@@ -41,26 +48,40 @@ export function App() {
         <AppHeader />
 
         <main className={main.main}>
-          <DndProvider backend={HTML5Backend}>
-            <BurgerIngredients />
-            <BurgerConstructor />
-          </DndProvider>
+          <Switch location={background || location} >
+            <Route path="/" exact={true}>
+              <DndProvider backend={HTML5Backend}>
+                <BurgerIngredients />
+                <BurgerConstructor />
+              </DndProvider>
+            </Route>
 
-          <Switch>
-            <Router>
-              <Route path="/Login" exact={true}>
-                <Login />
-              </Route>
 
-              <Route path='/profile' exact={true}>
-                <Register />
-              </Route>
+            {/*  <Router> */}
+            <Route path="/Login" exact={true}>
+              <Login />
+            </Route>
 
-              <Route >
-                <NotFound404 />
-              </Route>
+            <Route path="/Register" exact={true}>
+              <Register />
+            </Route>
 
-            </Router>
+            <Route path="/ForgotPassword" exact={true}>
+              <ForgotPassword />
+            </Route>
+
+            <Route path="/ResetPassword" exact={true}>
+              <ResetPassword />
+            </Route>
+
+            <Route >
+              <NotFound404 path="/" exact={true} />
+            </Route>
+
+
+            {/* ForgotPassword */}
+            {/* ResetPassword */}
+            {/*   </Router> */}
           </Switch>
         </main>
       </>

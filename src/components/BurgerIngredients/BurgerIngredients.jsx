@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef,  } from "react";
+import React, { useState, useMemo, useRef, } from "react";
 import PropTypes from "prop-types";
 import { useDrag } from "react-dnd";
 import { CurrencyIcon, Tab, Counter, } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -7,9 +7,11 @@ import Modal from "../Modal/Modal";
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_INGREDIENT_DETAILS, REMOVE_INGREDIENT_DETAILS } from "../../services/actions/ingredients";
+import { Link, useLocation } from 'react-router-dom';
 
 export function BurgerIngredients() {
   const dispatch = useDispatch();
+  const location = useLocation()
 
   const { ingredients } = useSelector(state => state.burgerIngredients);
   const { ingredientDetails } = useSelector(state => state.ingredientDetails);
@@ -43,7 +45,9 @@ export function BurgerIngredients() {
 
   const itelIngredient = ({ image, name, price, _id }) => (
     <li className={gatherBurger.ingridientsList} id={_id} onClickCapture={() => openModal(_id)} key={_id} >
-      <IngredientTab image={image} name={name} price={price} id={_id} />
+      <Link className={gatherBurger.link} to={{ pathname: `/ingredients/${_id}`, state: { background: location } }}>
+        <IngredientTab image={image} name={name} price={price} id={_id} />
+      </Link>
     </li>
   );
 

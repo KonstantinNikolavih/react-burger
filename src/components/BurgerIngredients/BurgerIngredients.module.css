@@ -105,3 +105,12 @@
   font-size: 16px;
   line-height: 24px;
 }
+.link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-left: 8px;
+  text-decoration: none;
+  color: #F2F2F3;
+}

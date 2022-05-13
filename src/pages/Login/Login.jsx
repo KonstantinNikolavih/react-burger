@@ -1,3 +1,5 @@
+import { createRef } from "react";
+import { Button, Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Route, Redirect, useLocation } from 'react-router-dom';
@@ -5,9 +7,22 @@ import styles from '../Login/Login.module.css';
 
 export function Login() {
   /* const dispatch = useDispatch() */
-  const location = useLocation()
+  /* const location = useLocation() */
 
   /* const { user } = useSelector(state => state.userProfil); */
+
+  const mailInput = createRef();
+  const passwordInput = createRef();
+
+  const inputClickEmail = (el) => {
+    el.preventDefault(el.terget.value);
+  }
+
+  const inputClickPassword = (el) => {
+    el.preventDefault(el.terget.value);
+  }
+
+
 
 
   /* if (user) {
@@ -22,12 +37,17 @@ export function Login() {
     <>
       <div className={styles.wrapper}>
         <form className={styles.form}>
-          <h1 className={styles.heading}>Вход</h1>
+          <h2 className={styles.heading}>Вход</h2>
+          <Input name='E-mail' placeholder='E-mail'/*  value={email} */ onChange={inputClickEmail} className={styles.text}>Логин
+          </Input>
+          <Input name='password' placeholder='Пароль' /* value={password} */ onChange={inputClickPassword} className={styles.text}> Пароль
+          </Input>
+          <Button /* disabled={value === '' && email === '' && password === ''} */ className={styles.button}>Вход</Button>
         </form>
-      </div>
-      <div className={styles.contener}>
-        <a className={styles.register} href='#' to={'/'}>Вы — новый пользователь?<Link></Link></a>
-        <a className={styles.resetPassword} href='#' to={'/'}>Забыли пароль?<Link></Link></a>
+        <p className={styles.contener}>
+          <a className={styles.register}>Вы — новый пользователь?<Link className={styles.link} href='#' to='/Register'>Зарегистрироваться</Link></a>
+          <a className={styles.resetPassword}>Забыли пароль?<Link className={styles.link} href='#' to='/ForgotPassword'>Восстановить пароль</Link></a>
+        </p>
       </div>
     </>
   );

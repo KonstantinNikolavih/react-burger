@@ -2,25 +2,27 @@ import React from "react";
 import headerStyle from '../AppHeader/AppHeader.module.css';
 import { Logo } from '@ya.praktikum/react-developer-burger-ui-components';
 import { BurgerIcon, ListIcon, ProfileIcon, } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Link, } from 'react-router-dom';
 
 export function AppHeader() {
   return (
     <header className={headerStyle.header}>
       <nav className={headerStyle.linkHeader}>
-        <a href='#' className={headerStyle.itemHeader}>
+
+        <Link to='/' href='#' className={headerStyle.itemHeader}>
           <BurgerIcon />
           <p className={`text_type_main-default ${headerStyle.textHeader}`}>Конструктор</p>
-        </a>
-        <a href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
+        </Link>
+        <Link to='/NotFound404'  className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
           <ListIcon type='secondary'></ListIcon>
           <p className={` text_type_main-default ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Лента заказов</p>
-        </a>
+        </Link>
       </nav>
       <Logo />
-      <a href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
+      <Link to='/Login' href='#' className={` ${headerStyle.itemHeader} ${headerStyle.colorHeader}`}>
         <ProfileIcon type='secondary'></ProfileIcon>
         <p className={`text_type_main-default ${headerStyle.textHeader} ${headerStyle.colorHeader}`}>Личный кабинет</p>
-      </a>
+      </Link>
     </header>
   )
 }

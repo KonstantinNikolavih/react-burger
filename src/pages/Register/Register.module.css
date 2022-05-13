@@ -3,13 +3,31 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-top: 180px;
+  padding-top: 180px;
+  margin-top: 24px;
 }
 
-.form {
+.heading {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  /* font-family: 'JetBrains Mono'; */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #F2F2F3;
+  margin-bottom: 24px;
+
+}
+
+.form {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
 }
 
 .input {
@@ -18,17 +36,36 @@
 
 .button {
   text-align: center;
+  margin-top: 24px;
 }
 
 .text {
-  margin: 0;
+  margin-top: 24px;
   margin-bottom: 16px;
   padding: 0;
   color: #8585AD;
   text-align: center;
+
 }
 
 .link {
   color: #4C4CFF;
   text-decoration: none;
+  margin-left: 6px;
+}
+
+.enter {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #8585AD;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
 }
