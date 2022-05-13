@@ -1,6 +1,14 @@
-.link {
-
+.contener {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  text-align: center;
 }
-.item {
+.link {
+  margin: 0 auto;
+}
 
+.item {
+  width: 100%;
 }

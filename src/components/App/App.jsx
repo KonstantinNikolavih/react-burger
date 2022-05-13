@@ -11,12 +11,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // route
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Login } from '../../pages/Login.jsx';
-import { NotFound404 } from "../../pages/NotFound404/NotFound404"
+import { Login } from '../../pages/Login/Login';
+import { Register } from "../../pages/Register/Register";
+import { NotFound404 } from "../../pages/NotFound404/NotFound404";
 
 export function App() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  /* const history = useHistory(); */
 
   const { load, error } = useSelector(state => state.burgerIngredients)
 
@@ -38,22 +39,29 @@ export function App() {
     return (
       <>
         <AppHeader />
+
         <main className={main.main}>
           <DndProvider backend={HTML5Backend}>
             <BurgerIngredients />
             <BurgerConstructor />
           </DndProvider>
 
-          <Router>
-            <Route path="/login" exact={true}>
-              <Login />
-            </Route>
+          <Switch>
+            <Router>
+              <Route path="/Login" exact={true}>
+                <Login />
+              </Route>
 
-            <Route >
-              <NotFound404 />
-            </Route>
+              <Route path='/profile' exact={true}>
+                <Register />
+              </Route>
 
-          </Router>
+              <Route >
+                <NotFound404 />
+              </Route>
+
+            </Router>
+          </Switch>
         </main>
       </>
     );
