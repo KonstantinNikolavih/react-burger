@@ -23,7 +23,16 @@ export function Login() {
   }
 
 
-
+  /*   useEffect(
+      () => {
+        if (searchValue) {
+          history.replace({ search: `?q=${searchValue}` });
+        } else {
+          history.replace({ search: '' });
+        }
+      },
+      [searchValue, history, search]
+    );  */
 
   /* if (user) {
     return (
@@ -38,11 +47,13 @@ export function Login() {
       <div className={styles.wrapper}>
         <form className={styles.form}>
           <h2 className={styles.heading}>Вход</h2>
-          <Input name='E-mail' placeholder='E-mail'/*  value={email} */ onChange={inputClickEmail} className={styles.text}>Логин
-          </Input>
-          <Input name='password' placeholder='Пароль' /* value={password} */ onChange={inputClickPassword} className={styles.text}> Пароль
-          </Input>
-          <Button /* disabled={value === '' && email === '' && password === ''} */ className={styles.button}>Вход</Button>
+
+            <Input name='E-mail' placeholder='E-mail'/*  value={email} */ onChange={inputClickEmail} className={` ${styles.text} ${styles.input} `}>Логин
+            </Input>
+            <Input name='password' placeholder='Пароль' /* value={password} */ onChange={inputClickPassword} className={styles.text}> Пароль
+            </Input>
+            <Button /* disabled={value === '' && email === '' && password === ''} */ className={styles.button}>Вход</Button>
+
         </form>
         <p className={styles.contener}>
           <a className={styles.register}>Вы — новый пользователь?<Link className={styles.link} href='#' to='/Register'>Зарегистрироваться</Link></a>

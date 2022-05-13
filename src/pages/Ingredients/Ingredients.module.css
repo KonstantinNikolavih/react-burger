@@ -1,0 +1,14 @@
+.contener {
+  width: 100%;
+}
+
+.text {
+/*   font-family: 'JetBrains Mono'; */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}

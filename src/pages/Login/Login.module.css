@@ -62,3 +62,8 @@
 .resetPassword {
   color: #8585AD;
 }
+input,
+.input div:not(input + div) {
+  width: 100%;
+  top: 8px;
+}

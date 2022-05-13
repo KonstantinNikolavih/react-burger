@@ -29,4 +29,29 @@ export const sendOrder = (setId) => {
   }).then(checkRespose);
 };
 
-export default { API_URL, checkRespose, sendOrder, getData };
+
+
+//почта восстановления пароля
+export const getEmailPassword = (setId) => {
+  return fetch(`${API_URL.api}password-reset`, {
+    method: "POST",
+    headers: API_URL.headers,
+    body: JSON.stringify({
+      "email": setId,
+    }),
+  }).then(checkRespose);
+};
+
+// и сброса пароля
+export const getResetPassword = (password, code) => {
+  return fetch(`${API_URL.api}password-reset/reset`, {
+    method: "POST",
+    headers: API_URL.headers,
+    body: JSON.stringify({
+      "password": password,
+      "token": code,
+    }),
+  }).then(checkRespose);
+};
+
+export default { API_URL, checkRespose, sendOrder, getData, getResetPassword };

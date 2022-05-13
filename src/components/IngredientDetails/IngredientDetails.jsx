@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Modal from "../Modal/Modal";
+/* import { useParams } from 'react-router-dom'; */
 import IngredientDetailsStyle from '../IngredientDetails/IngredientDetails.module.css';
 import PropTypesData from "../../utils/PropTypes"
 
 export function IngredientDetails({ ingredient }) {
+  /*   const { id } = useParams(); */
   return (
     <div className={IngredientDetailsStyle.contener}>
       <img className={IngredientDetailsStyle.image} src={ingredient.image}></img>
