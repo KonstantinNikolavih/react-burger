@@ -42,6 +42,8 @@ export const getEmailPassword = (setId) => {
   }).then(checkRespose);
 };
 
+/* console.log(`Ошибка ${getEmailPassword.setId}`) */
+
 // и сброса пароля
 export const getResetPassword = (password, code) => {
   return fetch(`${API_URL.api}password-reset/reset`, {

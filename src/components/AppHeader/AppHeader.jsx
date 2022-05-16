@@ -8,7 +8,6 @@ export function AppHeader() {
   return (
     <header className={headerStyle.header}>
       <nav className={headerStyle.linkHeader}>
-
         <Link to='/' href='#' className={headerStyle.itemHeader}>
           <BurgerIcon />
           <p className={`text_type_main-default ${headerStyle.textHeader}`}>Конструктор</p>
