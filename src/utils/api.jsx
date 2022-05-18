@@ -32,12 +32,12 @@ export const sendOrder = (setId) => {
 
 
 //почта восстановления пароля
-export const getEmailPassword = (setId) => {
+export const getEmailPassword = (email) => {
   return fetch(`${API_URL.api}password-reset`, {
     method: "POST",
     headers: API_URL.headers,
     body: JSON.stringify({
-      "email": setId,
+      "email": email,
     }),
   }).then(checkRespose);
 };
@@ -55,5 +55,7 @@ export const getResetPassword = (password, code) => {
     }),
   }).then(checkRespose);
 };
+
+
 
 export default { API_URL, checkRespose, sendOrder, getData, getResetPassword };

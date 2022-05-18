@@ -9,34 +9,32 @@ import { BurgerConstructorIngredient } from '../BurgerConstructorIngredient/Burg
 import { useSelector, useDispatch } from "react-redux";
 import { useDrop, } from "react-dnd";
 import { getIngredients } from "../../services/actions/ingredients.jsx";
+import { ingredientAction, ingredientActionUid, ingredientActionOrder } from "../../services/actions/ingredients";
+import { useHistory } from "react-router-dom";
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const error = useSelector(state => state.order.error);
   const listIngredients = useSelector(state => state.burgerIngredients.ingredients);
   const orderNumber = useSelector(state => state.order.orderNumber);
   const ingredientsConst = useSelector(state => state.burgerConstructor.ingredientsConst);
+  const { userProfile } = useSelector(state => state.userProfil.userProfile);
 
   const addItem = (item) => {
     const drop = listIngredients.find(list => list._id === item.id)
 
     if (bun && drop.type === 'bun') {
-      dispatch({
-        type: TOGGLE_BUN_INSIDE_CONSTRUCTOR,
-        ingredient: drop
-      })
+      dispatch(ingredientAction(drop))
     }
     else {
-      dispatch({
-        type: ADD_INGREDIENT_INSIDE_CONSTRUCTOR,
-        ingredient: {
-          ...drop,
-          uid: uuidv4()
-        }
+      dispatch(ingredientActionUid({
+        ...drop, uid: uuidv4()
       })
-    }
-  };
+      )
+    };
+  }
   console.log(listIngredients)
 
   const array = useMemo(() => ingredientsConst.filter(list => list.type !== 'bun'), [ingredientsConst]);
@@ -82,9 +80,15 @@ const BurgerConstructor = () => {
   };
 
   const openModal = () => {
-    const totalIds = ingredientsConst.map((el) => el._id);
-    if (totalIds.length) {
-      dispatch(getIngredients(totalIds));
+    if (!userProfile) {
+      history.replace('/login');
+    }
+    else {
+      const totalIds = ingredientsConst.map((el) => el._id);
+      if (totalIds.length) {
+        dispatch(getIngredients(totalIds));
+        dispatch(ingredientActionOrder());
+      }
     }
   };
 

@@ -1,41 +1,65 @@
-import { createRef, useState } from "react";
+import { createRef, useState, useEffect } from "react";
 import { Button, Input } from '@ya.praktikum/react-developer-burger-ui-components';
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Route, Redirect, useLocation } from 'react-router-dom';
+import { Link, Route, Redirect, useLocation, useHistory } from 'react-router-dom';
 import styles from '../ResetPassword/ResetPassword.module.css';
+import { newPasswordAction } from "../../services/actions/userProfil"
 
 export function ResetPassword() {
-  /* const dispatch = useDispatch() */
-  /* const location = useLocation() */
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
-  /* const { user } = useSelector(state => state.userProfil); */
+  const { userLoad, postErrorMessage, userEmail } = useSelector(state => state.userProfil);
 
-  const [password, setPassword] = useState(null);
-  const [Value, setValue] = useState(null);
+  const [password, setPassword] = useState('');
+  const [value, setValue] = useState('');
 
 
+  useEffect(() => {
+    if (userEmail === 'pushToLoginPage') history.push('/login');
+    else if (userEmail === '') history.push('/reset-password')
+  }, [userEmail, history]);
 
-/*   const inputClickEmail = (el) => {
-    el.preventDefault(el.terget.value);
+  const inputClickEmail = (e) => {
+    setPassword(e.target.value)
+  };
+
+  const inputClickPassword = (e) => {
+    setValue(e.target.value)
+  };
+
+  const newPassword = (e) => {
+    e.preventDefault();
+    if (password && value) {
+      dispatch(newPasswordAction(password, value))
+    }
   }
 
-  const inputClickPassword = (el) => {
-    el.preventDefault(el.terget.value);
+  if (userLoad) {
+    return (<Redirect />)
   }
- */
+
+  /*   const inputClickEmail = (el) => {
+      el.preventDefault(el.terget.value);
+    }
+
+    const inputClickPassword = (el) => {
+      el.preventDefault(el.terget.value);
+    }
+   */
 
 
   return (
     <>
       <div className={styles.wrapper}>
-        <form className={styles.form}>
+        <form action="POST" className={styles.form} onSubmit={newPassword}>
           <h2 className={styles.heading}>Восстановление пароля</h2>
-          <Input name='E-mail' placeholder='Укажите e-mail' /* value={password} */ className={styles.text}> Пароль
+          <Input  value={password} name='E-mail' placeholder='Укажите e-mail' onChange={inputClickEmail}/* value={password} */ className={styles.text}> Пароль
           </Input>
-          <Input name='cod' placeholder='Введите код из письма'/*  value={email} */ className={styles.text}>Логин
+          <Input value={value} name='cod' placeholder='Введите код из письма' onChange={inputClickPassword}/*  value={email} */ className={styles.text}>Логин
           </Input>
-          <Button /* disabled={value === '' && email === '' && password === ''} */ className={styles.button}>Сохранить</Button>
+          <Button disabled={value === '' && password === ''} className={styles.button}>Сохранить</Button>
         </form>
         <p className={styles.contener}>
           <a className={styles.register}>Вспомнили пароль?<Link className={styles.link} href='#' to='/Login'>Войти</Link></a>

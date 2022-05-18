@@ -10,7 +10,7 @@ export const POST_ORDER_SUCCESS = 'POST_ORDER_SUCCESS';
 export const POST_ORDER_FAILED = 'POST_ORDER_FAILED';
 export const HANDLE_CLOSE_ORDER_MODAL = 'HANDLE_CLOSE_ORDER_MODAL';
 export const POST_ORDER_REQUEST = 'POST_ORDER_REQUEST';
-
+export const CLEAR_CONSTRUCTOR_ORDER = 'CLEAR_CONSTRUCTOR_ORDER';
 export const GET_FEED_REQUEST = 'GET_FEED_REQUEST';
 export const GET_FEED_SUCCESS = 'GET_FEED_SUCCESS';
 export const GET_FEED_FAILED = 'GET_FEED_FAILED';
@@ -59,3 +59,17 @@ export function getIngredients(setId) {
   }
 }
 
+
+export const ingredientAction = (ingredient) => ({
+  type: TOGGLE_BUN_INSIDE_CONSTRUCTOR,
+  ingredient
+})
+
+export const ingredientActionUid = (ingredient) => ({
+  type: ADD_INGREDIENT_INSIDE_CONSTRUCTOR,
+  ingredient
+})
+
+export const ingredientActionOrder = () => ({
+  type: CLEAR_CONSTRUCTOR_ORDER
+});

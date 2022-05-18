@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT_INSIDE_CONSTRUCTOR, REMOVE_INGREDIENT_INSIDE_CONSTRUCTOR, TOGGLE_BUN_INSIDE_CONSTRUCTOR, CHANGE_INGREDIENT_POSITION, } from "../actions/ingredients";
+import { ADD_INGREDIENT_INSIDE_CONSTRUCTOR, CLEAR_CONSTRUCTOR_ORDER, REMOVE_INGREDIENT_INSIDE_CONSTRUCTOR, TOGGLE_BUN_INSIDE_CONSTRUCTOR, CHANGE_INGREDIENT_POSITION, } from "../actions/ingredients";
 
 const burgerConstructorReducer = {
   ingredientsConst: []
@@ -31,7 +31,13 @@ export const burgerConstructor = (state = burgerConstructorReducer, action) => {
         ...state,
         ingredientsConst: [...state.ingredientsConst].filter((item) => item.uid !== action.uid)
       }
-}
+    }
+    case CLEAR_CONSTRUCTOR_ORDER: {
+      return {
+        ...state,
+        ingredientsConst: []
+      }
+    }
     case TOGGLE_BUN_INSIDE_CONSTRUCTOR: {
       return {
         ...state,

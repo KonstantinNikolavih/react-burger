@@ -70,7 +70,7 @@ export function App() {
               <ForgotPassword />
             </Route>
 
-            <Route path="/ResetPassword" exact={true}>
+            <Route path="/reset-password" exact={true}>
               <ResetPassword />
             </Route>
 
